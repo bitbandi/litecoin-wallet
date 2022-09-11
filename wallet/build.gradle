@@ -34,16 +34,15 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
-ext {
-    archivesBaseName = 'litecoin-wallet'
-}
-
 android {
     compileSdkVersion 'android-31'
     buildToolsVersion '33.0.0'
 
     defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 30
         applicationId 'de.schildbach.wallet'
+        archivesBaseName = 'litecoin-wallet'
         dexOptions {
             preDexLibraries false
         }
