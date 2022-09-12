@@ -43,7 +43,7 @@ android {
     buildToolsVersion '33.0.0'
 
     defaultConfig {
-        applicationId 'de.schildbach'
+        applicationId 'de.schildbach.wallet'
         dexOptions {
             preDexLibraries false
         }
@@ -64,11 +64,11 @@ android {
     productFlavors {
         dev {
             dimension 'flavor'
-            applicationIdSuffix '.wallet_test'
+            applicationIdSuffix '.litecoin_test'
         }
         prod {
             dimension 'flavor'
-            applicationIdSuffix '.wallet'
+            applicationIdSuffix '.litecoin'
         }
     }
 

@@ -6,7 +6,7 @@
     android:background="@color/bg_level0"
     android:orientation="vertical">
 
-    <de.schildbach.wallet.util.ViewPagerTabs
+    <de.schildbach.wallet.litecoin.util.ViewPagerTabs
         android:id="@+id/network_monitor_pager_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

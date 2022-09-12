@@ -2,6 +2,6 @@
 <androidx.fragment.app.FragmentContainerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/exchange_rates_fragment"
-    android:name="de.schildbach.wallet.ui.ExchangeRatesFragment"
+    android:name="de.schildbach.wallet.litecoin.ui.ExchangeRatesFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
