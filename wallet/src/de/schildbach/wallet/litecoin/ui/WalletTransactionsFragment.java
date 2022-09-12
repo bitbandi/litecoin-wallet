@@ -330,10 +330,12 @@ public class WalletTransactionsFragment extends Fragment implements Transactions
         if (config.remindBackup())
             return TransactionsAdapter.WarningType.BACKUP;
 
+/*
         final int storageEncryptionStatus = devicePolicyManager.getStorageEncryptionStatus();
         if (storageEncryptionStatus == DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE
                 || storageEncryptionStatus == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY)
             return TransactionsAdapter.WarningType.STORAGE_ENCRYPTION;
+*/
 
         return null;
     }
