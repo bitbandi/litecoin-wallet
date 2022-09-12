@@ -19,8 +19,8 @@
             </feMerge>
         </filter>
         <linearGradient id="coin-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#b9b9b9" />
-            <stop offset="100%" style="stop-color:#939393" />
+            <stop offset="0%" style="stop-color:#3e7bc1" />
+            <stop offset="100%" style="stop-color:#345d9d" />
         </linearGradient>
     </defs>
 
