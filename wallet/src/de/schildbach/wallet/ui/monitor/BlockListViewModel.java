@@ -30,10 +30,10 @@ import de.schildbach.wallet.data.AbstractWalletLiveData;
 import de.schildbach.wallet.data.BlockchainServiceLiveData;
 import de.schildbach.wallet.data.TimeLiveData;
 import de.schildbach.wallet.service.BlockchainService;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.StoredBlock;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Sha256Hash;
+import org.litecoinj.core.StoredBlock;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.wallet.Wallet;
 
 import java.util.HashSet;
 import java.util.List;
@@ -96,7 +96,7 @@ public class BlockListViewModel extends AndroidViewModel {
             if (wallet == null)
                 return;
             AsyncTask.execute(() -> {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                 final Set<Transaction> transactions = wallet.getTransactions(false);
                 final Set<Transaction> filteredTransactions = new HashSet<>(transactions.size());
                 for (final Transaction tx : transactions) {

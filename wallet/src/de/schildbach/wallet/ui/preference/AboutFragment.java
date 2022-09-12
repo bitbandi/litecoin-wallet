@@ -33,7 +33,7 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.ui.DialogBuilder;
 import de.schildbach.wallet.util.Installer;
 import de.schildbach.wallet.util.WalletUtils;
-import org.bitcoinj.core.VersionMessage;
+import org.litecoinj.core.VersionMessage;
 
 import java.io.IOException;
 
@@ -46,7 +46,7 @@ public final class AboutFragment extends PreferenceFragment {
 
     private static final String KEY_ABOUT_VERSION = "about_version";
     private static final String KEY_ABOUT_MARKET_APP = "about_market_app";
-    private static final String KEY_ABOUT_CREDITS_BITCOINJ = "about_credits_bitcoinj";
+    private static final String KEY_ABOUT_CREDITS_BITCOINJ = "about_credits_litecoinj";
 
     public static class ApkHashFragment extends DialogFragment {
         @Override

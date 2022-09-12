@@ -32,9 +32,9 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.ui.WalletActivity;
 import de.schildbach.wallet.ui.send.FeeCategory;
 import de.schildbach.wallet.ui.send.SendCoinsActivity;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Coin;
+import org.litecoinj.utils.MonetaryFormat;
+import org.litecoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,7 +54,7 @@ public class BootstrapReceiver extends BroadcastReceiver {
         log.info("got broadcast: " + intent);
         final PendingResult result = goAsync();
         AsyncTask.execute(() -> {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
             onAsyncReceive(context, intent);
             result.finish();
         });

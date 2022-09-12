@@ -271,7 +271,7 @@
   <string name="about_license_title">授權</string>
   <string name="about_source_title">程式碼</string>
   <string name="about_category_credits">這個應用程式使用了...</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s, 一個 Bitcoin 通訊協定的實作</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s, 一個 Bitcoin 通訊協定的實作</string>
   <string name="about_credits_zxing_title">ZXing, 一個處理 QR 代碼的程式庫</string>
   <string name="about_market_app_title">%s 商店頁面</string>
   <string name="about_market_app_summary">給這個應用程式評論或評分</string>

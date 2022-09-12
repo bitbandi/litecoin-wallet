@@ -24,8 +24,8 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.DynamicFeeLiveData;
 import de.schildbach.wallet.data.TransactionLiveData;
 import de.schildbach.wallet.ui.DialogEvent;
-import org.bitcoinj.core.PrefixedChecksummedBytes;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.PrefixedChecksummedBytes;
+import org.litecoinj.wallet.Wallet;
 
 /**
  * @author Andreas Schildbach

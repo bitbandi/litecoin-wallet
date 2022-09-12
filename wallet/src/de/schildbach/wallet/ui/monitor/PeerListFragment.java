@@ -30,7 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.common.net.HostAndPort;
 import de.schildbach.wallet.R;
 import de.schildbach.wallet.ui.AbstractWalletActivity;
-import org.bitcoinj.core.Peer;
+import org.litecoinj.core.Peer;
 
 import java.util.List;
 

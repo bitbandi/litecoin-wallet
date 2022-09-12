@@ -298,7 +298,7 @@
   <string name="about_license_title">Licenca</string>
   <string name="about_source_title">Izvorna koda</string>
   <string name="about_category_credits">Ta aplikacija uporablja…</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s, implementacija protokola bitcoin</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s, implementacija protokola bitcoin</string>
   <string name="about_credits_zxing_title">ZXing, knjižnico za obdelavo QR-kod</string>
   <string name="about_credits_bouncycastle_title">Bouncy Castle, kriptografsko knjižnico</string>
   <string name="about_credits_okhttp_title">OkHttp, knjižnico s HTTP-odjemalcem</string>

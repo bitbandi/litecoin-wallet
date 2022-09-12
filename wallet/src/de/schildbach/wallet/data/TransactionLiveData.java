@@ -23,8 +23,8 @@ import android.net.Uri;
 import android.os.Handler;
 import androidx.lifecycle.LiveData;
 import de.schildbach.wallet.WalletApplication;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionConfidence;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.TransactionConfidence;
 
 /**
  * @author Andreas Schildbach

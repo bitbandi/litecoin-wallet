@@ -22,11 +22,11 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.Bluetooth;
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoin.protocols.payments.Protos.PaymentACK;
-import org.bitcoinj.core.ProtocolException;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
+import org.litecoin.protocols.payments.Protos;
+import org.litecoin.protocols.payments.Protos.PaymentACK;
+import org.litecoinj.core.ProtocolException;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.protocols.payments.PaymentProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,7 +57,7 @@ public abstract class AcceptBluetoothThread extends Thread {
 
         @Override
         public void run() {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
 
             while (running.get()) {
                 try ( // start a blocking call, and return only on success or exception
@@ -102,7 +102,7 @@ public abstract class AcceptBluetoothThread extends Thread {
 
         @Override
         public void run() {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
 
             while (running.get()) {
                 try ( // start a blocking call, and return only on success or exception

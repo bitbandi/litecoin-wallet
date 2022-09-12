@@ -22,7 +22,7 @@ import androidx.lifecycle.Observer;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.WalletApplication.OnWalletLoadedListener;
 import de.schildbach.wallet.ui.Event;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.wallet.Wallet;
 
 /**
  * @author Andreas Schildbach

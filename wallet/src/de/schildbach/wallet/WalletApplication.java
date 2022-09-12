@@ -48,14 +48,14 @@ import de.schildbach.wallet.util.Bluetooth;
 import de.schildbach.wallet.util.CrashReporter;
 import de.schildbach.wallet.util.Toast;
 import de.schildbach.wallet.util.WalletUtils;
-import org.bitcoinj.core.VersionMessage;
-import org.bitcoinj.crypto.LinuxSecureRandom;
-import org.bitcoinj.crypto.MnemonicCode;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.UnreadableWalletException;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.WalletFiles;
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.litecoinj.core.VersionMessage;
+import org.litecoinj.crypto.LinuxSecureRandom;
+import org.litecoinj.crypto.MnemonicCode;
+import org.litecoinj.utils.Threading;
+import org.litecoinj.wallet.UnreadableWalletException;
+import org.litecoinj.wallet.Wallet;
+import org.litecoinj.wallet.WalletFiles;
+import org.litecoinj.wallet.WalletProtobufSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,8 +95,8 @@ public class WalletApplication extends Application {
         initStrictMode();
 
         Threading.throwOnLockCycles();
-        org.bitcoinj.core.Context.enableStrictMode();
-        org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+        org.litecoinj.core.Context.enableStrictMode();
+        org.litecoinj.core.Context.propagate(Constants.CONTEXT);
 
         log.info("=== starting app using flavor: {}, build type: {}, network: {}", BuildConfig.FLAVOR,
                 BuildConfig.BUILD_TYPE, Constants.NETWORK_PARAMETERS.getId());
@@ -108,7 +108,7 @@ public class WalletApplication extends Application {
         final PackageInfo packageInfo = packageInfo();
 
         Threading.uncaughtExceptionHandler = (thread, throwable) -> {
-            log.info("bitcoinj uncaught exception", throwable);
+            log.info("litecoinj uncaught exception", throwable);
             CrashReporter.saveBackgroundTrace(throwable, packageInfo);
         };
 
@@ -157,7 +157,7 @@ public class WalletApplication extends Application {
         getWalletExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                 synchronized (getWalletLock) {
                     initMnemonicCode();
                     if (walletFiles == null)

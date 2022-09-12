@@ -52,9 +52,9 @@ import de.schildbach.wallet.util.Crypto;
 import de.schildbach.wallet.util.Iso8601Format;
 import de.schildbach.wallet.util.Toast;
 import de.schildbach.wallet.util.WalletUtils;
-import org.bitcoinj.wallet.Protos;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.litecoinj.wallet.Protos;
+import org.litecoinj.wallet.Wallet;
+import org.litecoinj.wallet.WalletProtobufSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -303,7 +303,7 @@
   <string name="about_license_title">Trwydded</string>
   <string name="about_source_title">Cod wreiddiol</string>
   <string name="about_category_credits">Mae\'r ap hwn yn defnyddio…</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s, gweithrediad protocol Bitcoin</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s, gweithrediad protocol Bitcoin</string>
   <string name="about_credits_zxing_title">ZXing, llyfrgell prosesu codau QR</string>
   <string name="about_credits_bouncycastle_title">Bouncy Castle, llyfrgell cryptograffeg</string>
   <string name="about_credits_okhttp_title">OkHttp, llyfrgell cleient HTTP</string>

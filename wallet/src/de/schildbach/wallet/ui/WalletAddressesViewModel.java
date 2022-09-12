@@ -29,12 +29,12 @@ import de.schildbach.wallet.addressbook.AddressBookDatabase;
 import de.schildbach.wallet.addressbook.AddressBookEntry;
 import de.schildbach.wallet.data.AbstractWalletLiveData;
 import de.schildbach.wallet.data.ConfigOwnNameLiveData;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.LegacyAddress;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.listeners.KeyChainEventListener;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.ECKey;
+import org.litecoinj.core.LegacyAddress;
+import org.litecoinj.utils.Threading;
+import org.litecoinj.wallet.Wallet;
+import org.litecoinj.wallet.listeners.KeyChainEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;

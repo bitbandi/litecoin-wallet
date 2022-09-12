@@ -31,20 +31,20 @@ import de.schildbach.wallet.addressbook.AddressBookEntry;
 import de.schildbach.wallet.data.AbstractWalletLiveData;
 import de.schildbach.wallet.data.ConfigFormatLiveData;
 import de.schildbach.wallet.data.WalletLiveData;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.Transaction.Purpose;
-import org.bitcoinj.core.TransactionConfidence.ConfidenceType;
-import org.bitcoinj.core.listeners.TransactionConfidenceEventListener;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.listeners.WalletChangeEventListener;
-import org.bitcoinj.wallet.listeners.WalletCoinsReceivedEventListener;
-import org.bitcoinj.wallet.listeners.WalletCoinsSentEventListener;
-import org.bitcoinj.wallet.listeners.WalletReorganizeEventListener;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.Coin;
+import org.litecoinj.core.Sha256Hash;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.Transaction.Purpose;
+import org.litecoinj.core.TransactionConfidence.ConfidenceType;
+import org.litecoinj.core.listeners.TransactionConfidenceEventListener;
+import org.litecoinj.utils.MonetaryFormat;
+import org.litecoinj.utils.Threading;
+import org.litecoinj.wallet.Wallet;
+import org.litecoinj.wallet.listeners.WalletChangeEventListener;
+import org.litecoinj.wallet.listeners.WalletCoinsReceivedEventListener;
+import org.litecoinj.wallet.listeners.WalletCoinsSentEventListener;
+import org.litecoinj.wallet.listeners.WalletReorganizeEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,7 +102,7 @@ public class WalletTransactionsViewModel extends AndroidViewModel {
 
     private void maybePostList() {
         AsyncTask.execute(() -> {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
             final Set<Transaction> transactions = WalletTransactionsViewModel.this.transactions.getValue();
             final MonetaryFormat format = configFormat.getValue();
             final Map<String, AddressBookEntry> addressBook = AddressBookEntry
@@ -179,7 +179,7 @@ public class WalletTransactionsViewModel extends AndroidViewModel {
         protected void load() {
             final Wallet wallet = getWallet();
             AsyncTask.execute(() -> {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                 postValue(wallet.getTransactions(true));
             });
         }

@@ -26,7 +26,7 @@ import androidx.lifecycle.MediatorLiveData;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.BlockchainServiceLiveData;
 import de.schildbach.wallet.service.BlockchainService;
-import org.bitcoinj.core.Peer;
+import org.litecoinj.core.Peer;
 
 import java.net.InetAddress;
 import java.util.HashMap;

@@ -25,7 +25,7 @@ import android.view.MenuItem;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import de.schildbach.wallet.R;
-import org.bitcoinj.script.Script;
+import org.litecoinj.script.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

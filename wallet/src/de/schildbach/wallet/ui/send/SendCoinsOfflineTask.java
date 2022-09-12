@@ -20,14 +20,14 @@ package de.schildbach.wallet.ui.send;
 import android.os.Handler;
 import android.os.Looper;
 import de.schildbach.wallet.Constants;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.InsufficientMoneyException;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.wallet.SendRequest;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.CompletionException;
-import org.bitcoinj.wallet.Wallet.CouldNotAdjustDownwards;
+import org.litecoinj.core.Coin;
+import org.litecoinj.core.ECKey;
+import org.litecoinj.core.InsufficientMoneyException;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.wallet.SendRequest;
+import org.litecoinj.wallet.Wallet;
+import org.litecoinj.wallet.Wallet.CompletionException;
+import org.litecoinj.wallet.Wallet.CouldNotAdjustDownwards;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,7 +49,7 @@ public abstract class SendCoinsOfflineTask {
 
     public final void sendCoinsOffline(final SendRequest sendRequest) {
         backgroundHandler.post(() -> {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
 
             try {
                 log.info("sending: {}", sendRequest);

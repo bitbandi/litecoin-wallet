@@ -287,7 +287,7 @@
   <string name="about_license_title">Licença</string>
   <string name="about_source_title">Código fonte</string>
   <string name="about_category_credits">Esta aplicação está a usar…</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s, uma implementação do protocol de Bitcoin</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s, uma implementação do protocol de Bitcoin</string>
   <string name="about_credits_zxing_title">ZXing, uma biblioteca de processamento de código QR</string>
   <string name="about_credits_bouncycastle_title">Bouncy Castle, uma biblioteca de criptografia</string>
   <string name="about_credits_okhttp_title">OkHttp, um cliente de biblioteca HTTP</string>

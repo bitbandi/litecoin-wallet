@@ -295,7 +295,7 @@
   <string name="about_license_title">Licencia</string>
   <string name="about_source_title">Código fuente</string>
   <string name="about_category_credits">Esta aplicación utiliza…</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s</string>
   <string name="about_credits_zxing_title">ZXing</string>
   <string name="about_credits_bouncycastle_title">Bouncy Castle, una biblioteca de criptografía</string>
   <string name="about_credits_okhttp_title">OkHttp, una biblioteca de cliente HTTP</string>

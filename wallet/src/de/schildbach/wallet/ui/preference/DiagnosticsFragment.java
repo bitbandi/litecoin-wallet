@@ -28,9 +28,9 @@ import de.schildbach.wallet.R;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.ui.DialogBuilder;
-import org.bitcoinj.crypto.DeterministicKey;
-import org.bitcoinj.script.Script;
-import org.bitcoinj.wallet.DeterministicKeyChain;
+import org.litecoinj.crypto.DeterministicKey;
+import org.litecoinj.script.Script;
+import org.litecoinj.wallet.DeterministicKeyChain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

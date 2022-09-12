@@ -18,7 +18,7 @@
 package de.schildbach.wallet.util;
 
 import com.google.common.io.CharStreams;
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.litecoinj.wallet.WalletProtobufSerializer;
 import org.junit.Test;
 
 import java.io.BufferedReader;

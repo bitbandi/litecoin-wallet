@@ -65,8 +65,8 @@ Historically there is two backup formats. Let's look at the first printable char
 
     cat bitcoin-wallet-decrypted-backup | tr -cd "[:print:]" | awk '{print $1}'
 
-If it prints "org.bitcoin.production", you got the right password and the backup file uses the
-bitcoinj protobuf format. This backup format was introduced in v3.47 (May 2014). Skip to
+If it prints "org.litecoin.production", you got the right password and the backup file uses the
+litecoinj protobuf format. This backup format was introduced in v3.47 (May 2014). Skip to
 RECOVERING FROM PROTOBUF WALLET FORMAT.
 
 If it prints just a hash sign (`#`), you got the right password and the backup file uses the old
@@ -79,13 +79,13 @@ password.
 
 ## RECOVERING FROM PROTOBUF WALLET FORMAT
 
-We need wallet-tool from bitcoinj. First, in a working directory, let's get bitcoinj:
+We need wallet-tool from litecoinj. First, in a working directory, let's get litecoinj:
 
-    git clone -b release-0.15 https://github.com/bitcoinj/bitcoinj.git
+    git clone -b release-0.15 https://github.com/litecoinj/litecoinj.git
 
 Make sure everything is compiled and ready to go by using once:
 
-    cd bitcoinj/tools
+    cd litecoinj/tools
     ./wallet-tool
 
 Now use wallet-tool to sync the wallet from your backup:

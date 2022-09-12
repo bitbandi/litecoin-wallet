@@ -278,7 +278,7 @@
   <string name="about_license_title">Licensz</string>
   <string name="about_source_title">Forráskód</string>
   <string name="about_category_credits">Ez az app a következőket használja…</string>
-  <string name="about_credits_bitcoinj_title">Az applikáció bitcoinj %s-t használ</string>
+  <string name="about_credits_bitcoinj_title">Az applikáció litecoinj %s-t használ</string>
   <string name="about_credits_zxing_title">ZXing, egy QR-kód feldolgozó könyvtár</string>
   <string name="about_credits_bouncycastle_title">Bouncy Castle, egy kriptografikus könyvtár</string>
   <string name="about_credits_okhttp_title">OkHttp, egy HTTP kliens könyvtár</string>

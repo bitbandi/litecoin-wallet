@@ -22,9 +22,9 @@ import android.os.Parcelable;
 import androidx.annotation.Nullable;
 import com.google.common.base.Objects;
 import de.schildbach.wallet.Constants;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.NetworkParameters;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.AddressFormatException;
+import org.litecoinj.core.NetworkParameters;
 
 /**
  * @author Andreas Schildbach

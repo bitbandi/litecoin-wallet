@@ -156,7 +156,7 @@
 	<string name="about_title">על אודות</string>
 	<string name="about_license_title">רישיון</string>
 	<string name="about_category_credits">אפליקציה זו משתמשת ב</string>
-	<string name="about_credits_bitcoinj_title">bitcoinj %s</string>
+	<string name="about_credits_bitcoinj_title">litecoinj %s</string>
 	<string name="about_credits_zxing_title">ZXing</string>
 	<string name="about_market_app_title">%s App Page</string>
 	<string name="about_market_app_summary">כתוב ביקורת או דרג את האפליקציה</string>

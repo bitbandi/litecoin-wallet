@@ -27,9 +27,9 @@ import de.schildbach.wallet.ui.InputParser.StringInputParser;
 import de.schildbach.wallet.ui.scan.ScanActivity;
 import de.schildbach.wallet.ui.send.SendCoinsActivity;
 import de.schildbach.wallet.ui.send.SweepWalletActivity;
-import org.bitcoinj.core.PrefixedChecksummedBytes;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
+import org.litecoinj.core.PrefixedChecksummedBytes;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.VerificationException;
 
 /**
  * @author Andreas Schildbach

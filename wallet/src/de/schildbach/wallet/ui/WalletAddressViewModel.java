@@ -30,17 +30,17 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.AbstractWalletLiveData;
 import de.schildbach.wallet.data.ConfigOwnNameLiveData;
 import de.schildbach.wallet.util.Qr;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.LegacyAddress;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.listeners.WalletChangeEventListener;
-import org.bitcoinj.wallet.listeners.WalletCoinsReceivedEventListener;
-import org.bitcoinj.wallet.listeners.WalletCoinsSentEventListener;
-import org.bitcoinj.wallet.listeners.WalletReorganizeEventListener;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.Coin;
+import org.litecoinj.core.LegacyAddress;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.uri.BitcoinURI;
+import org.litecoinj.utils.Threading;
+import org.litecoinj.wallet.Wallet;
+import org.litecoinj.wallet.listeners.WalletChangeEventListener;
+import org.litecoinj.wallet.listeners.WalletCoinsReceivedEventListener;
+import org.litecoinj.wallet.listeners.WalletCoinsSentEventListener;
+import org.litecoinj.wallet.listeners.WalletReorganizeEventListener;
 
 import java.util.Locale;
 
@@ -122,7 +122,7 @@ public class WalletAddressViewModel extends AndroidViewModel {
         protected void load() {
             final Wallet wallet = getWallet();
             AsyncTask.execute(() -> {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                 postValue(wallet.currentReceiveAddress());
             });
         }

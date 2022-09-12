@@ -34,9 +34,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okio.BufferedSink;
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoin.protocols.payments.Protos.Payment;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
+import org.litecoin.protocols.payments.Protos;
+import org.litecoin.protocols.payments.Protos.Payment;
+import org.litecoinj.protocols.payments.PaymentProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

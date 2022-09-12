@@ -304,7 +304,7 @@
   <string name="about_license_title">许可协议</string>
   <string name="about_source_title">源代码</string>
   <string name="about_category_credits">此应用正在使用...</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s, 一个比特币协议库</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s, 一个比特币协议库</string>
   <string name="about_credits_zxing_title">ZXing，一个QR码处理库</string>
   <string name="about_credits_bouncycastle_title">Bouncy Castle，一个密码学函数库</string>
   <string name="about_credits_okhttp_title">OkHttp，一个HTTP客户端函数库</string>

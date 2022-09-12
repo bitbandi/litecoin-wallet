@@ -45,10 +45,10 @@ import de.schildbach.wallet.addressbook.AddressBookDatabase;
 import de.schildbach.wallet.addressbook.AddressBookEntry;
 import de.schildbach.wallet.util.Qr;
 import de.schildbach.wallet.util.Toast;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.LegacyAddress;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.LegacyAddress;
+import org.litecoinj.uri.BitcoinURI;
+import org.litecoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

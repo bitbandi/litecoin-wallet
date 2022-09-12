@@ -33,12 +33,12 @@ import de.schildbach.wallet.data.ConfigOwnNameLiveData;
 import de.schildbach.wallet.data.SelectedExchangeRateLiveData;
 import de.schildbach.wallet.util.Bluetooth;
 import de.schildbach.wallet.util.Qr;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
-import org.bitcoinj.script.Script;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.Coin;
+import org.litecoinj.protocols.payments.PaymentProtocol;
+import org.litecoinj.script.Script;
+import org.litecoinj.uri.BitcoinURI;
+import org.litecoinj.wallet.Wallet;
 
 /**
  * @author Andreas Schildbach
@@ -137,7 +137,7 @@ public class RequestCoinsViewModel extends AndroidViewModel {
                 final Wallet wallet = getWallet();
                 final Script.ScriptType outputScriptType = this.outputScriptType;
                 AsyncTask.execute(() -> {
-                    org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                    org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                     postValue(outputScriptType != null ? wallet.freshReceiveAddress(outputScriptType)
                             : wallet.freshReceiveAddress());
                 });

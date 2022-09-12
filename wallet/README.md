@@ -10,7 +10,7 @@ storage:
     Testnet: /data/data/de.schildbach.wallet_test/files/wallet-protobuf-testnet
 
 The wallet file format is not compatible to wallet.dat (Satoshi client). Rather, it uses a custom protobuf format
-which should be compatible between clients using bitcoinj.
+which should be compatible between clients using litecoinj.
 
 Certain actions cause automatic rolling backups of your wallet to app-private storage:
 
@@ -152,7 +152,7 @@ Instructions for preparing an NFC tag with your address:
 
 ### BITCOINJ
 
-Bitcoin Wallet uses [bitcoinj](https://bitcoinj.org) for Bitcoin specific logic.
+Bitcoin Wallet uses [litecoinj](https://litecoinj.org) for Bitcoin specific logic.
 
 
 ### EXCHANGE RATES

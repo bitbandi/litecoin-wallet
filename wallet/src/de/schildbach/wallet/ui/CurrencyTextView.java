@@ -28,8 +28,8 @@ import androidx.annotation.Nullable;
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.R;
 import de.schildbach.wallet.util.MonetarySpannable;
-import org.bitcoinj.core.Monetary;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.litecoinj.core.Monetary;
+import org.litecoinj.utils.MonetaryFormat;
 
 /**
  * @author Andreas Schildbach

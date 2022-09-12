@@ -23,7 +23,7 @@ import android.os.Bundle;
 import de.schildbach.wallet.R;
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.ui.AbstractWalletActivity;
-import org.bitcoinj.core.PrefixedChecksummedBytes;
+import org.litecoinj.core.PrefixedChecksummedBytes;
 
 /**
  * @author Andreas Schildbach

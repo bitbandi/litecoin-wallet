@@ -23,8 +23,8 @@ import com.squareup.moshi.Moshi;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okio.BufferedSource;
-import org.bitcoinj.utils.ExchangeRate;
-import org.bitcoinj.utils.Fiat;
+import org.litecoinj.utils.ExchangeRate;
+import org.litecoinj.utils.Fiat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

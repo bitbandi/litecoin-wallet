@@ -31,8 +31,8 @@ import de.schildbach.wallet.data.SelectedExchangeRateLiveData;
 import de.schildbach.wallet.data.TransactionLiveData;
 import de.schildbach.wallet.data.WalletBalanceLiveData;
 import de.schildbach.wallet.ui.AddressAndLabel;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.wallet.Wallet.BalanceType;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.wallet.Wallet.BalanceType;
 
 import java.util.List;
 

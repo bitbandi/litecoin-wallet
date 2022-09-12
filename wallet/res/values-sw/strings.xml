@@ -214,7 +214,7 @@
   <string name="about_license_title">leseni</string>
   <string name="about_source_title">Source code (chanzo)</string>
   <string name="about_category_credits">Hii programu anatumia…</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s</string>
+  <string name="about_credits_bitcoinj_title">litecoinj %s</string>
   <string name="about_credits_zxing_title">ZXing</string>
   <string name="about_market_app_title">Tovuti ya %s</string>
   <string name="about_market_app_summary">Mapitio na kiwango programu hii</string>

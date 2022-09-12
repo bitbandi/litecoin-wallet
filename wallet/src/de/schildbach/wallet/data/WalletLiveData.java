@@ -18,7 +18,7 @@
 package de.schildbach.wallet.data;
 
 import de.schildbach.wallet.WalletApplication;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.wallet.Wallet;
 
 /**
  * @author Andreas Schildbach

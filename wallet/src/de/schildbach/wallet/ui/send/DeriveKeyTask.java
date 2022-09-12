@@ -20,9 +20,9 @@ package de.schildbach.wallet.ui.send;
 import android.os.Handler;
 import android.os.Looper;
 import de.schildbach.wallet.Constants;
-import org.bitcoinj.crypto.KeyCrypter;
-import org.bitcoinj.crypto.KeyCrypterScrypt;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.crypto.KeyCrypter;
+import org.litecoinj.crypto.KeyCrypterScrypt;
+import org.litecoinj.wallet.Wallet;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +51,7 @@ public abstract class DeriveKeyTask {
         final KeyCrypter keyCrypter = checkNotNull(wallet.getKeyCrypter());
 
         backgroundHandler.post(() -> {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
 
             // Key derivation takes time.
             KeyParameter key = keyCrypter.deriveKey(password);

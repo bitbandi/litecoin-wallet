@@ -36,9 +36,9 @@ import com.google.common.hash.Hashing;
 import com.google.common.net.HostAndPort;
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.R;
-import org.bitcoinj.core.Peer;
-import org.bitcoinj.core.PeerAddress;
-import org.bitcoinj.core.VersionMessage;
+import org.litecoinj.core.Peer;
+import org.litecoinj.core.PeerAddress;
+import org.litecoinj.core.VersionMessage;
 
 import java.net.InetAddress;
 import java.util.ArrayList;

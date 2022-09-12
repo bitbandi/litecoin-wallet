@@ -26,11 +26,11 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.BlockchainServiceLiveData;
 import de.schildbach.wallet.data.WalletLiveData;
 import de.schildbach.wallet.service.BlockchainService;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionBroadcast;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.TransactionBroadcast;
+import org.litecoinj.core.VerificationException;
+import org.litecoinj.utils.Threading;
+import org.litecoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

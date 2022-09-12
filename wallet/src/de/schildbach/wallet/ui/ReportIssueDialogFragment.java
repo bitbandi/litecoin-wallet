@@ -42,12 +42,12 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.util.Bluetooth;
 import de.schildbach.wallet.util.CrashReporter;
 import de.schildbach.wallet.util.Installer;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionOutput;
-import org.bitcoinj.core.Utils;
-import org.bitcoinj.script.ScriptException;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Sha256Hash;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.TransactionOutput;
+import org.litecoinj.core.Utils;
+import org.litecoinj.script.ScriptException;
+import org.litecoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

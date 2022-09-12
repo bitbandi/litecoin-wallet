@@ -27,10 +27,10 @@ import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.addressbook.AddressBookEntry;
 import de.schildbach.wallet.data.AbstractWalletLiveData;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.LegacyAddress;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.ECKey;
+import org.litecoinj.core.LegacyAddress;
+import org.litecoinj.wallet.Wallet;
 
 import java.util.HashSet;
 import java.util.List;

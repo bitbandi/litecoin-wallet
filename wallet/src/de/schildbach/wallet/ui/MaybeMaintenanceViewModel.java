@@ -26,9 +26,9 @@ import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.AbstractWalletLiveData;
 import de.schildbach.wallet.service.BlockchainState;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.wallet.DeterministicUpgradeRequiresPassword;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.wallet.DeterministicUpgradeRequiresPassword;
+import org.litecoinj.wallet.Wallet;
 
 import java.util.List;
 
@@ -79,7 +79,7 @@ public class MaybeMaintenanceViewModel extends AndroidViewModel {
         protected void load() {
             final Wallet wallet = getWallet();
             AsyncTask.execute(() -> {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                 try {
                     final ListenableFuture<List<Transaction>> result = wallet.doMaintenance(null, false);
                     postValue(!result.get().isEmpty());

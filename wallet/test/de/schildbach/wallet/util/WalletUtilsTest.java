@@ -17,8 +17,8 @@
 
 package de.schildbach.wallet.util;
 
-import org.bitcoinj.params.MainNetParams;
-import org.bitcoinj.params.TestNet3Params;
+import org.litecoinj.params.MainNetParams;
+import org.litecoinj.params.TestNet3Params;
 import org.junit.Test;
 
 import java.io.IOException;

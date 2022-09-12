@@ -38,10 +38,10 @@ import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.R;
 import de.schildbach.wallet.util.GenericUtils;
 import de.schildbach.wallet.util.MonetarySpannable;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Monetary;
-import org.bitcoinj.utils.Fiat;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.litecoinj.core.Coin;
+import org.litecoinj.core.Monetary;
+import org.litecoinj.utils.Fiat;
+import org.litecoinj.utils.MonetaryFormat;
 
 /**
  * @author Andreas Schildbach

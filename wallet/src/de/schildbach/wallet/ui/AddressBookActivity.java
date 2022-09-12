@@ -36,10 +36,10 @@ import de.schildbach.wallet.data.PaymentIntent;
 import de.schildbach.wallet.ui.scan.ScanActivity;
 import de.schildbach.wallet.util.ViewPagerTabs;
 import de.schildbach.wallet.util.ZoomOutPageTransformer;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.VerificationException;
+import org.litecoinj.wallet.Wallet;
 
 /**
  * @author Andreas Schildbach

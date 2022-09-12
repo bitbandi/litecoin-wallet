@@ -40,9 +40,9 @@ import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.R;
 import de.schildbach.wallet.addressbook.AddressBookEntry;
 import de.schildbach.wallet.util.WalletUtils;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.ECKey;
+import org.litecoinj.wallet.Wallet;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;

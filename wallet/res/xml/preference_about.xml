@@ -50,11 +50,11 @@
         android:title="@string/about_category_credits">
 
         <Preference
-            android:key="about_credits_bitcoinj"
-            android:summary="https://bitcoinj.org">
+            android:key="about_credits_litecoinj"
+            android:summary="https://litecoinj.org">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://bitcoinj.org" />
+                android:data="https://litecoinj.org" />
         </Preference>
         <Preference
             android:key="about_credits_zxing"

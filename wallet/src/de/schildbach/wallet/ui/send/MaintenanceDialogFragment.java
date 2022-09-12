@@ -44,11 +44,11 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.ui.AbstractWalletActivity;
 import de.schildbach.wallet.ui.DialogBuilder;
 import de.schildbach.wallet.util.WalletUtils;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.DeterministicUpgradeRequiresPassword;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Coin;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.utils.MonetaryFormat;
+import org.litecoinj.wallet.DeterministicUpgradeRequiresPassword;
+import org.litecoinj.wallet.Wallet;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -212,7 +212,7 @@ public class MaintenanceDialogFragment extends DialogFragment {
 
     private void doMaintenance(final KeyParameter encryptionKey) {
         backgroundHandler.post(() -> {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.litecoinj.core.Context.propagate(Constants.CONTEXT);
 
             try {
                 wallet.doMaintenance(encryptionKey, true);

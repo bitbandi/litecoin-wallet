@@ -37,9 +37,9 @@ import de.schildbach.wallet.data.BlockchainServiceLiveData;
 import de.schildbach.wallet.data.WalletLiveData;
 import de.schildbach.wallet.util.CrashReporter;
 import de.schildbach.wallet.util.Toast;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.wallet.Wallet;
+import org.litecoinj.core.Transaction;
+import org.litecoinj.core.VerificationException;
+import org.litecoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

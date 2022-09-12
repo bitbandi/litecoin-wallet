@@ -63,9 +63,9 @@ import de.schildbach.wallet.ui.send.SendCoinsActivity;
 import de.schildbach.wallet.util.Bluetooth;
 import de.schildbach.wallet.util.Nfc;
 import de.schildbach.wallet.util.Toast;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
-import org.bitcoinj.script.Script;
+import org.litecoinj.core.Address;
+import org.litecoinj.protocols.payments.PaymentProtocol;
+import org.litecoinj.script.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
