@@ -172,7 +172,7 @@ public final class Constants {
     public static final long AUTOCLOSE_DELAY_MS = 1000;
 
     /** A balance above this amount will show a warning */
-    public static final Coin TOO_MUCH_BALANCE_THRESHOLD = Coin.COIN.divide(32);
+    public static final Coin TOO_MUCH_BALANCE_THRESHOLD = Coin.COIN.multiply(32);
     /** A balance above this amount will cause the donate option to be shown */
     public static final Coin SOME_BALANCE_THRESHOLD = Coin.COIN.divide(1600);
 
