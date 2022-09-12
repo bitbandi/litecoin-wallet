@@ -3,11 +3,11 @@
     <string name="help_wallet">
 <![CDATA[
 		<p>
-			The upper left part of the screen displays your balance in Bitcoins and one selected national currency.
+			The upper left part of the screen displays your balance in Litecoins and one selected national currency.
 			Tap to go to the list of national currencies, and tap on one of the currencies to select it as default.
 		</p>
 		<p>
-			The QR code in the upper right contains your current bitcoin address and can be used for scanning by a payer.
+			The QR code in the upper right contains your current litecoin address and can be used for scanning by a payer.
 			Tap on the QR code to get a larger version of it.
 		</p>
 		<p>
@@ -25,10 +25,10 @@
 <![CDATA[
 		<p>
 			Using this dialog, you can request coins from a payer.
-			The payer should already have installed a Bitcoin wallet.
+			The payer should already have installed a Litecoin wallet.
 		</p>
 		<p>
-			First, you can enter an amount of Bitcoins to request.
+			First, you can enter an amount of Litecoins to request.
 		</p>
 		<p>
 			Then, you either have the generated QR code scanned by the payer.
@@ -47,7 +47,7 @@
 			You have initiated the process of sending coins.
 		</p>
 		<p>
-			First, you enter the Bitcoin address to pay to.
+			First, you enter the Litecoin address to pay to.
 			The address will autocomplete from known entries in your address book.
 			You can also scan a QR code being presented by the payee by pressing the camera button.
 		</p>
@@ -59,7 +59,7 @@
 		</p>
 		<p>
 			You can enter a payment while being offline.
-			It will be sent on next restart of Bitcoin Wallet.
+			It will be sent on next restart of Litecoin Wallet.
 			If you want a payment to be processed as fast as possible, make sure you are well connected (i.e. on a WLAN).
 		</p>
 		<p>
@@ -75,8 +75,8 @@
 			<b>Important safety notes:</b>
 		</p>
 		<p>
-			Bitcoins are stored on the device.
-			<b>If you lose it, you\'ll lose your Bitcoins.</b>
+			Litecoins are stored on the device.
+			<b>If you lose it, you\'ll lose your Litecoins.</b>
 		</p>
 		<p>
 			This means you need to <b>back up your wallet</b>!
@@ -84,12 +84,12 @@
 			Keep your backup safe and remember the password.
 		</p>
 		<p>
-			<b>Before uninstalling</b> (or clearing app data/wiping your device), <b>transfer your Bitcoins to another wallet</b>.
-			Remaining Bitcoins will be lost.
+			<b>Before uninstalling</b> (or clearing app data/wiping your device), <b>transfer your Litecoins to another wallet</b>.
+			Remaining Litecoins will be lost.
 		</p>
 		<p>
 			<b>Payments are irreversible</b>.
-			If you send your Bitcoins into the void, there is almost no way to get them back.
+			If you send your Litecoins into the void, there is almost no way to get them back.
 		</p>
 		<p>
 			<b>Keep your mobile device safe!</b>
@@ -109,13 +109,13 @@
             <b>Technical notes:</b>
         </p>
         <p>
-            As an SPV/light wallet, Bitcoin Wallet follows the chain of the most proof-of-work (sometimes also called the \"longest chain\", the \"winning chain\" or the \"Bitcoin block chain\").
+            As an SPV/light wallet, Litecoin Wallet follows the chain of the most proof-of-work (sometimes also called the \"longest chain\", the \"winning chain\" or the \"Litecoin block chain\").
             You will only receive incoming payments and be able to pay on that chain.
-            No guarantees can be made about Bitcoins on minority chains, that is chains with less proof-of-work.
+            No guarantees can be made about Litecoins on minority chains, that is chains with less proof-of-work.
         </p>
         <p>
             In the past, minority chains have always become irrelevant very quickly.
-            If you desire to follow a minority chain anyway, you are advised to use the \"trusted peer\" feature to exclusively connect to a bitcoind implementation which enforces your desired chain.
+            If you desire to follow a minority chain anyway, you are advised to use the \"trusted peer\" feature to exclusively connect to a litecoind implementation which enforces your desired chain.
             If the network between your wallet and the trusted peer is not to be trusted, use a VPN to authenticate that connection.
         </p>
     ]]>
