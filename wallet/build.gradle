@@ -48,8 +48,20 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
     buildTypes {
         all {
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources false
             proguardFile 'proguard.cfg'
