@@ -20,5 +20,16 @@ allprojects {
         mavenLocal()
         mavenCentral()
         google()
+
+        def maven_url = findProperty('maven.url')
+        if (maven_url) {
+            maven {
+                credentials {
+                    username findProperty('maven.username') ?: ''
+                    password findProperty('maven.password') ?: ''
+                }
+                url maven_url
+            }
+        }
     }
 }
