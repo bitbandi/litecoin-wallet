@@ -23,6 +23,8 @@ import com.squareup.moshi.Moshi;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okio.BufferedSource;
+
+import org.litecoinj.core.Coin;
 import org.litecoinj.utils.ExchangeRate;
 import org.litecoinj.utils.Fiat;
 import org.slf4j.Logger;
@@ -62,6 +64,18 @@ public final class CoinGecko {
         final JsonAdapter<Response> jsonAdapter = moshi.adapter(Response.class);
         final Response jsonResponse = jsonAdapter.fromJson(jsonSource);
         final List<ExchangeRateEntry> result = new ArrayList<>(jsonResponse.rates.size());
+        final ExchangeRateJson ltcRate = jsonResponse.rates.get("ltc");
+        if (ltcRate == null) {
+            log.warn("litecoin rate not found in {}", URL);
+            return result;
+        }
+        Coin LTC;
+        try {
+            LTC = Coin.parseCoin(ltcRate.value);
+        } catch (final ArithmeticException x) {
+            log.warn("problem parsing LTC exchange rate from {}: {}", URL, x.getMessage());
+            return result;
+        }
         for (Map.Entry<String, ExchangeRateJson> entry : jsonResponse.rates.entrySet()) {
             final String symbol = entry.getKey().toUpperCase(Locale.US);
             final ExchangeRateJson exchangeRate = entry.getValue();
@@ -69,7 +83,7 @@ public final class CoinGecko {
                 try {
                     final Fiat rate = Fiat.parseFiatInexact(symbol, exchangeRate.value);
                     if (rate.signum() > 0)
-                        result.add(new ExchangeRateEntry(SOURCE, new ExchangeRate(rate)));
+                        result.add(new ExchangeRateEntry(SOURCE, new ExchangeRate(LTC, rate)));
                 } catch (final ArithmeticException x) {
                     log.warn("problem parsing {} exchange rate from {}: {}", symbol, URL, x.getMessage());
                 }
