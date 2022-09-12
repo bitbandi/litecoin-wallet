@@ -19,6 +19,7 @@ package de.schildbach.wallet.litecoin.util;
 
 import org.litecoinj.params.MainNetParams;
 import org.litecoinj.params.TestNet3Params;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ import java.io.IOException;
  * @author Andreas Schildbach
  */
 public class WalletUtilsTest {
+    @Ignore
     @Test
     public void restoreWalletFromProtobufOrBase58() throws Exception {
         WalletUtils.restoreWalletFromProtobuf(getClass().getResourceAsStream("backup-protobuf-testnet"),
