@@ -43,6 +43,8 @@ import org.litecoinj.core.Monetary;
 import org.litecoinj.utils.Fiat;
 import org.litecoinj.utils.MonetaryFormat;
 
+import java.util.Objects;
+
 /**
  * @author Andreas Schildbach
  */
@@ -204,16 +206,16 @@ public final class CurrencyAmountView extends FrameLayout {
     }
 
     public void setAmount(@Nullable final Monetary amount, final boolean fireListener) {
-        if (!fireListener)
-            textViewListener.setFire(false);
-
-        if (amount != null)
-            textView.setText(new MonetarySpannable(inputFormat, amountSigned, amount));
-        else
-            textView.setText(null);
-
-        if (!fireListener)
-            textViewListener.setFire(true);
+        if (!Objects.equals(amount, getAmount())) {
+            if (!fireListener)
+                textViewListener.setFire(false);
+            if (amount != null)
+                textView.setText(new MonetarySpannable(inputFormat, amountSigned, amount));
+            else
+                textView.setText(null);
+            if (!fireListener)
+                textViewListener.setFire(true);
+        }
     }
 
     @Override

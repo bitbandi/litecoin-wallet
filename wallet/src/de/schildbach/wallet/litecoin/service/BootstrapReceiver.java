@@ -22,38 +22,43 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import androidx.annotation.WorkerThread;
 import androidx.core.app.NotificationCompat;
 import de.schildbach.wallet.litecoin.Configuration;
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.R;
 import de.schildbach.wallet.litecoin.WalletApplication;
+import de.schildbach.wallet.litecoin.data.PaymentIntent;
 import de.schildbach.wallet.litecoin.ui.WalletActivity;
 import de.schildbach.wallet.litecoin.ui.send.FeeCategory;
 import de.schildbach.wallet.litecoin.ui.send.SendCoinsActivity;
 import org.litecoinj.core.Coin;
+import org.litecoinj.utils.ContextPropagatingThreadFactory;
 import org.litecoinj.utils.MonetaryFormat;
 import org.litecoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 /**
  * @author Andreas Schildbach
  */
 public class BootstrapReceiver extends BroadcastReceiver {
+    private final Executor executor = Executors.newSingleThreadExecutor(new ContextPropagatingThreadFactory("bootstrap"));
+
     private static final Logger log = LoggerFactory.getLogger(BootstrapReceiver.class);
 
     private static final String ACTION_DISMISS = BootstrapReceiver.class.getPackage().getName() + ".dismiss";
     private static final String ACTION_DISMISS_FOREVER = BootstrapReceiver.class.getPackage().getName() +
             ".dismiss_forever";
-    private static final String ACTION_DONATE = BootstrapReceiver.class.getPackage().getName() + ".donate";
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
         log.info("got broadcast: " + intent);
         final PendingResult result = goAsync();
-        AsyncTask.execute(() -> {
+        executor.execute(() -> {
             org.litecoinj.core.Context.propagate(Constants.CONTEXT);
             onAsyncReceive(context, intent);
             result.finish();
@@ -82,8 +87,6 @@ public class BootstrapReceiver extends BroadcastReceiver {
             dismissNotification(context);
         } else if (ACTION_DISMISS_FOREVER.equals(action)) {
             dismissNotificationForever(context, application.getConfiguration());
-        } else if (ACTION_DONATE.equals(action)) {
-            donate(context, application.getWallet());
         } else {
             throw new IllegalArgumentException(action);
         }
@@ -155,11 +158,16 @@ public class BootstrapReceiver extends BroadcastReceiver {
                 PendingIntent.getBroadcast(application, 0, dismissForeverIntent, PendingIntent.FLAG_IMMUTABLE)).build());
 
         if (canDonate) {
-            final Intent donateIntent = new Intent(application, BootstrapReceiver.class);
-            donateIntent.setAction(ACTION_DONATE);
-            notification.addAction(new NotificationCompat.Action.Builder(0,
-                    application.getString(R.string.wallet_options_donate),
-                    PendingIntent.getBroadcast(application, 0, donateIntent, PendingIntent.FLAG_IMMUTABLE)).build());
+            final PaymentIntent paymentIntent = PaymentIntent.from(Constants.DONATION_ADDRESS,
+                    application.getString(R.string.wallet_donate_address_label),
+                    Constants.NETWORK_PARAMETERS.getMaxMoney());
+            final Intent donateIntent = SendCoinsActivity.startIntent(application, paymentIntent,
+                    FeeCategory.ECONOMIC, Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            final PendingIntent pendingIntent = PendingIntent.getActivity(application, 0, donateIntent,
+                    PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+            final NotificationCompat.Action action = new NotificationCompat.Action.Builder(0,
+                    application.getString(R.string.wallet_options_donate), pendingIntent).build();
+            notification.addAction(action);
         }
 
         final NotificationManager nm = application.getSystemService(NotificationManager.class);
@@ -179,15 +187,5 @@ public class BootstrapReceiver extends BroadcastReceiver {
         config.setRemindBalance(false);
         final NotificationManager nm = context.getSystemService(NotificationManager.class);
         nm.cancel(Constants.NOTIFICATION_ID_INACTIVITY);
-    }
-
-    @WorkerThread
-    private void donate(final Context context, final Wallet wallet) {
-        final Coin balance = wallet.getBalance(Wallet.BalanceType.AVAILABLE_SPENDABLE);
-        SendCoinsActivity.startDonate(context, balance, FeeCategory.ECONOMIC,
-                Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        final NotificationManager nm = context.getSystemService(NotificationManager.class);
-        nm.cancel(Constants.NOTIFICATION_ID_INACTIVITY);
-        context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
     }
 }

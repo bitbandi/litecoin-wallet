@@ -18,6 +18,7 @@
 package de.schildbach.wallet.litecoin.ui;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +26,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
-import de.schildbach.wallet.litecoin.R;
-import de.schildbach.wallet.litecoin.util.CheatSheet;
+import de.schildbach.wallet.R;
 
 /**
  * @author Andreas Schildbach
@@ -53,7 +53,8 @@ public final class WalletActionsFragment extends Fragment {
 
         final View sendQrButton = view.findViewById(R.id.wallet_actions_send_qr);
         sendQrButton.setOnClickListener(v -> activity.handleScan(v));
-        CheatSheet.setup(sendQrButton);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            sendQrButton.setTooltipText(sendQrButton.getContentDescription());
 
         return view;
     }

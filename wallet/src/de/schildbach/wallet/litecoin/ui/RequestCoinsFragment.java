@@ -19,6 +19,7 @@ package de.schildbach.wallet.litecoin.ui;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -51,6 +52,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ShareCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
@@ -117,7 +119,7 @@ public final class RequestCoinsFragment extends Fragment {
         this.application = activity.getWalletApplication();
         this.config = application.getConfiguration();
         this.clipboardManager = activity.getSystemService(ClipboardManager.class);
-        this.bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        this.bluetoothAdapter = activity.getSystemService(BluetoothManager.class).getAdapter();
         this.nfcAdapter = NfcAdapter.getDefaultAdapter(activity);
     }
 
@@ -125,8 +127,6 @@ public final class RequestCoinsFragment extends Fragment {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.fragmentManager = getChildFragmentManager();
-
-        setHasOptionsMenu(true);
 
         viewModel = new ViewModelProvider(this).get(RequestCoinsViewModel.class);
         final Intent intent = activity.getIntent();
@@ -160,6 +160,37 @@ public final class RequestCoinsFragment extends Fragment {
             @Override
             protected void onEvent(final Bitmap bitmap) {
                 BitmapFragment.show(fragmentManager, bitmap);
+            }
+        });
+
+        activity.addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(final Menu menu, final MenuInflater inflater) {
+                inflater.inflate(R.menu.request_coins_fragment_options, menu);
+            }
+
+            @Override
+            public void onPrepareMenu(final Menu menu) {
+                final boolean hasBitcoinUri = viewModel.bitcoinUri.getValue() != null;
+                menu.findItem(R.id.request_coins_options_copy).setEnabled(hasBitcoinUri);
+                menu.findItem(R.id.request_coins_options_share).setEnabled(hasBitcoinUri);
+                menu.findItem(R.id.request_coins_options_local_app).setEnabled(hasBitcoinUri);
+            }
+
+            @Override
+            public boolean onMenuItemSelected(final MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.request_coins_options_copy) {
+                    handleCopy();
+                    return true;
+                } else if (itemId == R.id.request_coins_options_share) {
+                    handleShare();
+                    return true;
+                } else if (itemId == R.id.request_coins_options_local_app) {
+                    handleLocalApp();
+                    return true;
+                }
+                return false;
             }
         });
 
@@ -311,37 +342,6 @@ public final class RequestCoinsFragment extends Fragment {
             viewModel.bluetoothServiceIntent = null;
         }
         viewModel.bluetoothMac.setValue(null);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-        inflater.inflate(R.menu.request_coins_fragment_options, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(final Menu menu) {
-        final boolean hasBitcoinUri = viewModel.bitcoinUri.getValue() != null;
-        menu.findItem(R.id.request_coins_options_copy).setEnabled(hasBitcoinUri);
-        menu.findItem(R.id.request_coins_options_share).setEnabled(hasBitcoinUri);
-        menu.findItem(R.id.request_coins_options_local_app).setEnabled(hasBitcoinUri);
-        super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        int itemId = item.getItemId();
-        if (itemId == R.id.request_coins_options_copy) {
-            handleCopy();
-            return true;
-        } else if (itemId == R.id.request_coins_options_share) {
-            handleShare();
-            return true;
-        } else if (itemId == R.id.request_coins_options_local_app) {
-            handleLocalApp();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void handleCopy() {

@@ -21,7 +21,9 @@ import android.app.Application;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
 import de.schildbach.wallet.litecoin.addressbook.AddressBookDatabase;
 import de.schildbach.wallet.litecoin.addressbook.AddressBookEntry;
@@ -31,10 +33,19 @@ import de.schildbach.wallet.litecoin.data.SelectedExchangeRateLiveData;
 import de.schildbach.wallet.litecoin.data.TransactionLiveData;
 import de.schildbach.wallet.litecoin.data.WalletBalanceLiveData;
 import de.schildbach.wallet.litecoin.ui.AddressAndLabel;
+import org.litecoinj.core.Address;
+import org.litecoinj.core.Coin;
 import org.litecoinj.core.Transaction;
+import org.litecoinj.utils.ContextPropagatingThreadFactory;
+import org.litecoinj.wallet.SendRequest;
+import org.litecoinj.wallet.Wallet;
 import org.litecoinj.wallet.Wallet.BalanceType;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Andreas Schildbach
@@ -47,9 +58,11 @@ public class SendCoinsViewModel extends AndroidViewModel {
     }
 
     private final WalletApplication application;
+    private final Wallet wallet;
     public final LiveData<List<AddressBookEntry>> addressBook;
     public final SelectedExchangeRateLiveData exchangeRate;
     public final DynamicFeeLiveData dynamicFees;
+    public final MutableLiveData<FeeCategory> feeCategory = new MutableLiveData<>(FeeCategory.NORMAL);
     public final WalletBalanceLiveData balance;
     public final MutableLiveData<String> progress = new MutableLiveData<>();
     public final TransactionLiveData sentTransaction;
@@ -58,23 +71,68 @@ public class SendCoinsViewModel extends AndroidViewModel {
     public State state = null;
     @Nullable
     public PaymentIntent paymentIntent = null;
-    public FeeCategory feeCategory = FeeCategory.NORMAL;
     @Nullable
     public AddressAndLabel validatedAddress = null;
     @Nullable
+    public final MutableLiveData<Coin> amount = new MutableLiveData<>(); // MAX_MONEY means available balance
+    public final MediatorLiveData<Coin> visibleAmount = new MediatorLiveData<>();
+    @Nullable
     public Boolean directPaymentAck = null;
-    @Nullable
-    public Transaction dryrunTransaction = null;
-    @Nullable
-    public Exception dryrunException = null;
+    public MutableLiveData<Transaction> dryrunTransaction = new MutableLiveData<>();
+    public MutableLiveData<Exception> dryrunException = new MutableLiveData<>();
+
+    private final ExecutorService executor = Executors.newSingleThreadExecutor(
+            new ContextPropagatingThreadFactory("send"));
 
     public SendCoinsViewModel(final Application application) {
         super(application);
         this.application = (WalletApplication) application;
+        this.wallet = this.application.getWallet();
         this.addressBook = AddressBookDatabase.getDatabase(this.application).addressBookDao().getAll();
         this.exchangeRate = new SelectedExchangeRateLiveData(this.application);
         this.dynamicFees = new DynamicFeeLiveData(this.application);
         this.balance = new WalletBalanceLiveData(this.application, BalanceType.AVAILABLE);
         this.sentTransaction = new TransactionLiveData(this.application);
+        this.visibleAmount.addSource(amount, amount -> amountOrBalanceChanged());
+        this.visibleAmount.addSource(balance, balance -> amountOrBalanceChanged());
+
+        dynamicFees.observeForever(dynamicFees -> maybeDryrun());
+        feeCategory.observeForever(feeCategory -> maybeDryrun());
+    }
+
+    @Override
+    protected void onCleared() {
+        executor.shutdown();
+    }
+
+    private void amountOrBalanceChanged() {
+        final Coin amount = this.amount.getValue();
+        if (amount != null && amount.equals(Constants.NETWORK_PARAMETERS.getMaxMoney()))
+            visibleAmount.setValue(this.balance.getValue());
+        else
+            visibleAmount.setValue(amount);
+    }
+
+    public void maybeDryrun() {
+        final Map<FeeCategory, Coin> fees = this.dynamicFees.getValue();
+        final Coin amount = this.amount.getValue();
+        dryrunTransaction.setValue(null);
+        dryrunException.setValue(null);
+        if (state == State.INPUT && amount != null && fees != null) {
+            final Address dummy = wallet.currentReceiveAddress(); // won't be used, tx is never committed
+            final SendRequest sendRequest = paymentIntent.mergeWithEditedValues(amount, dummy).toSendRequest();
+            sendRequest.signInputs = false;
+            sendRequest.emptyWallet =
+                    paymentIntent.mayEditAmount() && amount.equals(Constants.NETWORK_PARAMETERS.getMaxMoney());
+            sendRequest.feePerKb = fees.get(feeCategory.getValue());
+            executor.execute(() -> {
+                try {
+                    wallet.completeTx(sendRequest);
+                    dryrunTransaction.postValue(sendRequest.tx);
+                } catch (final Exception x) {
+                    dryrunException.postValue(x);
+                }
+            });
+        }
     }
 }

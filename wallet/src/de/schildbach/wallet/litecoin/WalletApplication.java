@@ -22,6 +22,7 @@ import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioAttributes;
@@ -51,6 +52,7 @@ import de.schildbach.wallet.litecoin.util.WalletUtils;
 import org.litecoinj.core.VersionMessage;
 import org.litecoinj.crypto.LinuxSecureRandom;
 import org.litecoinj.crypto.MnemonicCode;
+import org.litecoinj.utils.ContextPropagatingThreadFactory;
 import org.litecoinj.utils.Threading;
 import org.litecoinj.wallet.UnreadableWalletException;
 import org.litecoinj.wallet.Wallet;
@@ -118,7 +120,8 @@ public class WalletApplication extends Application {
 
         final Configuration config = getConfiguration();
         config.updateLastVersionCode(packageInfo.versionCode);
-        final BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        final BluetoothManager bluetoothManager = getSystemService(BluetoothManager.class);
+        final BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
         if (bluetoothAdapter != null)
             config.updateLastBluetoothAddress(Bluetooth.getAddress(bluetoothAdapter));
 
@@ -149,7 +152,7 @@ public class WalletApplication extends Application {
         }
     }
 
-    private final Executor getWalletExecutor = Executors.newSingleThreadExecutor();
+    private final Executor getWalletExecutor = Executors.newSingleThreadExecutor(new ContextPropagatingThreadFactory("get wallet"));
     private final Object getWalletLock = new Object();
 
     @AnyThread
@@ -157,7 +160,6 @@ public class WalletApplication extends Application {
         getWalletExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                org.litecoinj.core.Context.propagate(Constants.CONTEXT);
                 synchronized (getWalletLock) {
                     initMnemonicCode();
                     if (walletFiles == null)
