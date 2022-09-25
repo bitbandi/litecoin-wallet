@@ -26,7 +26,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
-import de.schildbach.wallet.R;
+import de.schildbach.wallet.litecoin.R;
 
 /**
  * @author Andreas Schildbach
