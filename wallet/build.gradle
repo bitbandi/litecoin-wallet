@@ -62,7 +62,9 @@ android {
 
     buildTypes {
         all {
-            signingConfig signingConfigs.release
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled true
             shrinkResources false
             proguardFile 'proguard.cfg'
