@@ -205,16 +205,24 @@ public final class CurrencyAmountView extends FrameLayout {
             return inputFormat.parseFiat(localCurrencyCode, amountStr);
     }
 
-    public void setAmount(@Nullable final Monetary amount, final boolean fireListener) {
-        if (!Objects.equals(amount, getAmount())) {
-            if (!fireListener)
-                textViewListener.setFire(false);
-            if (amount != null)
-                textView.setText(new MonetarySpannable(inputFormat, amountSigned, amount));
-            else
-                textView.setText(null);
-            if (!fireListener)
-                textViewListener.setFire(true);
+    public void setAmount(@Nullable final Monetary amount) {
+        final Monetary oldAmount = getAmount();
+        final Spannable oldSpannable = oldAmount != null ? new MonetarySpannable(inputFormat, amountSigned, oldAmount) : null;
+        final Spannable newSpannable = amount != null ? new MonetarySpannable(inputFormat, amountSigned, amount) : null;
+        final String oldStr = oldSpannable != null ? oldSpannable.toString() : null;
+        final String newStr = newSpannable != null ? newSpannable.toString() : null;
+        if (!Objects.equals(newStr, oldStr)) {
+            // never fire listener if set from externally
+            textViewListener.setFire(false);
+            final int selectionStart = textView.getSelectionStart();
+            final int selectionEnd = textView.getSelectionEnd();
+            textView.setText(newSpannable);
+            if (textView instanceof EditText && newSpannable != null && selectionStart != -1 && selectionEnd != -1) {
+                // preserve cursor position
+                final int limit = newSpannable.length();
+                ((EditText) textView).setSelection(Math.min(selectionStart, limit), Math.min(selectionEnd, limit));
+            }
+            textViewListener.setFire(true);
         }
     }
 
@@ -246,7 +254,6 @@ public final class CurrencyAmountView extends FrameLayout {
 
     public void setNextFocusId(final int nextFocusId) {
         textView.setNextFocusDownId(nextFocusId);
-        textView.setNextFocusForwardId(nextFocusId);
     }
 
     private boolean isValidAmount(final boolean zeroIsValid) {
@@ -275,7 +282,8 @@ public final class CurrencyAmountView extends FrameLayout {
     private final OnClickListener deleteClickListener = new OnClickListener() {
         @Override
         public void onClick(final View v) {
-            setAmount(null, true);
+            // intentionally fire listener
+            textView.setText(null);
             textView.requestFocus();
         }
     };
@@ -329,11 +337,11 @@ public final class CurrencyAmountView extends FrameLayout {
             super.onRestoreInstanceState(bundle.getParcelable("super_state"));
             textView.onRestoreInstanceState(bundle.getParcelable("child_textview"));
             if (bundle.containsKey("coin_amount"))
-                setAmount(Coin.valueOf(bundle.getLong("coin_amount")), false);
+                setAmount(Coin.valueOf(bundle.getLong("coin_amount")));
             else if (bundle.containsKey("fiat_amount"))
-                setAmount(Fiat.valueOf(bundle.getString("fiat_currency"), bundle.getLong("fiat_amount")), false);
+                setAmount(Fiat.valueOf(bundle.getString("fiat_currency"), bundle.getLong("fiat_amount")));
             else
-                setAmount(null, false);
+                setAmount(null);
         } else {
             super.onRestoreInstanceState(state);
         }
@@ -378,7 +386,7 @@ public final class CurrencyAmountView extends FrameLayout {
             if (!hasFocus) {
                 final Monetary amount = getAmount();
                 if (amount != null)
-                    setAmount(amount, false);
+                    setAmount(amount);
             }
 
             if (listener != null && fire)
