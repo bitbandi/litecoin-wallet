@@ -57,6 +57,7 @@ import de.schildbach.wallet.litecoin.ui.ProgressDialogFragment;
 import de.schildbach.wallet.litecoin.ui.TransactionsAdapter;
 import de.schildbach.wallet.litecoin.ui.scan.ScanActivity;
 import de.schildbach.wallet.litecoin.util.MonetarySpannable;
+import de.schildbach.wallet.litecoin.util.Toast;
 import org.litecoinj.core.AddressFormatException;
 import org.litecoinj.core.Coin;
 import org.litecoinj.core.DumpedPrivateKey;
@@ -319,8 +320,13 @@ public class SweepWalletFragment extends Fragment {
         checkState(privateKeyToSweep != null);
 
         if (privateKeyToSweep instanceof DumpedPrivateKey) {
-            final ECKey key = ((DumpedPrivateKey) privateKeyToSweep).getKey();
-            askConfirmSweep(key);
+            try {
+                final ECKey key = ((DumpedPrivateKey) privateKeyToSweep).getKey();
+                askConfirmSweep(key);
+            } catch (final IllegalArgumentException x) {
+                log.info("failed decoding dumped private key", x);
+                new Toast(activity).longToast(R.string.sweep_wallet_fragment_decode_failed);
+            }
         } else if (privateKeyToSweep instanceof BIP38PrivateKey) {
             badPasswordView.setVisibility(View.INVISIBLE);
 

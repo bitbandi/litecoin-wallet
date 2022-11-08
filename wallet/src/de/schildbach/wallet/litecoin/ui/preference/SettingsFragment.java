@@ -17,6 +17,7 @@
 
 package de.schildbach.wallet.litecoin.ui.preference;
 
+import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
@@ -40,6 +41,7 @@ import android.text.Html;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import androidx.core.content.ContextCompat;
 import com.google.common.net.HostAndPort;
 import de.schildbach.wallet.litecoin.Configuration;
 import de.schildbach.wallet.litecoin.Constants;
@@ -126,9 +128,12 @@ public final class SettingsFragment extends PreferenceFragment implements OnPref
         if (dataUsagePreference.getIntent() == null || pm.resolveActivity(dataUsagePreference.getIntent(), 0) == null)
             removeOrDisablePreference(dataUsagePreference);
 
-        final Preference batteryOptimiationPreference = findPreference(Configuration.PREFS_KEY_BATTERY_OPTIMIZATION);
-        if (powerManager.isIgnoringBatteryOptimizations(activity.getPackageName()))
-            removeOrDisablePreference(batteryOptimiationPreference);
+        final Preference batteryOptimizationPreference = findPreference(Configuration.PREFS_KEY_BATTERY_OPTIMIZATION);
+        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED)
+            batteryOptimizationPreference.setIntent(new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                    Uri.parse("package:" + application.getPackageName())));
+        if (powerManager.isIgnoringBatteryOptimizations(application.getPackageName()) || pm.resolveActivity(batteryOptimizationPreference.getIntent(), 0) == null)
+            removeOrDisablePreference(batteryOptimizationPreference);
 
         final Preference notificationsPreference = findPreference(Configuration.PREFS_KEY_NOTIFICATIONS);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)

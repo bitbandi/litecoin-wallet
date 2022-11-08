@@ -2,6 +2,7 @@
 <resources>
     <string name="toast_wallet_reset">Your wallet was reset!\nIt will take some time to recover.</string>
     <string name="toast_start_external_document_failed">There is no web browser installed to open the external document.</string>
+    <string name="toast_start_external_document_error">Web browser error: %s</string>
     <string name="toast_start_storage_provider_selector_failed">No suitable cloud storage provider is installed.\nYou need something like \"Nextcloud\" or \"Google Drive\".</string>
     <string name="wallet_disclaimer_fragment_remind_safety">Use at your own risk. Read the &lt;u&gt;safety notes&lt;/u&gt;.</string>
     <string name="wallet_disclaimer_fragment_remind_backup">You need to &lt;u&gt;back up your wallet&lt;/u&gt;!</string>
@@ -60,6 +61,9 @@
     <string name="alert_dialogs_fragment_settings_failed_title">Problem with opening of settings</string>
     <string name="alert_dialogs_fragment_too_much_balance_dialog_title">Keep the risk low</string>
     <string name="alert_dialogs_fragment_too_much_balance_dialog_message">The amount in your wallet is quite high for carrying in your pocket. Please move some to a safer place, like a cold wallet.</string>
+    <string name="alert_dialogs_fragment_battery_optimization_dialog_title">Receive payments in background</string>
+    <string name="alert_dialogs_fragment_battery_optimization_dialog_message">At the moment your device is configured to only notify incoming payments while Litecoin Wallet is visible – due to battery usage.\n\nWe suggest allowing the app to always stay up-to-date with the blockchain, even in the background.\n\nDon\'t worry, we\'ll still mind your battery.</string>
+    <string name="alert_dialogs_fragment_battery_optimization_dialog_button_allow">Allow</string>
     <string name="send_coins_activity_title">Send Litecoins</string>
     <string name="send_coins_fragment_request_payment_request_progress">Fetching signature from %s…</string>
     <string name="send_coins_fragment_request_payment_request_failed_title">Fetching payment request failed</string>
@@ -129,6 +133,7 @@
     <string name="sweep_wallet_fragment_request_wallet_balance_empty">The paper wallet is empty.</string>
     <string name="sweep_wallet_fragment_insufficient_money_title">Not enough coins</string>
     <string name="sweep_wallet_fragment_insufficient_money_msg">The amount of coins in the wallet is too small for sweeping.</string>
+    <string name="sweep_wallet_fragment_decode_failed">Cannot decode private key</string>
     <string name="sweep_wallet_options_reload">Reload balance</string>
     <string name="maintenance_dialog_title">Maintenance recommended</string>
     <string name="maintenance_dialog_message">You received %1$s to unsecure addresses. Would you like to move these coins to secure addresses? A small network fee of %2$s will be paid.</string>
@@ -175,7 +180,7 @@
     <string name="transaction_row_message_purpose_raise_fee">This transaction raises the network fee for a previous payment.</string>
     <string name="transaction_row_message_received_direct">This payment has been received directly. There is a risk it might never become spendable.</string>
     <string name="transaction_row_message_received_unconfirmed_delayed">The confirmation of this payment is delayed, likely due to an overload of the Litecoin network.</string>
-    <string name="transaction_row_message_received_unconfirmed_unlocked">This payment should become spendable in a few minutes.</string>
+    <string name="transaction_row_message_received_unconfirmed_unlocked">This payment should not be trusted until it is confirmed. Confirmations take a few minutes.</string>
     <string name="transaction_row_message_received_unconfirmed_chain_forking">Due to maintenance on the Litecoin network, this transaction should not be trusted until it is fully confirmed.</string>
     <string name="transaction_row_message_received_in_conflict">This payment has an increased risk of being reversed by the sender! If you can, wait for confirmation.</string>
     <string name="transaction_row_message_received_dead">This payment has been reversed by the sender.</string>

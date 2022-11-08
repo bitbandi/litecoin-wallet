@@ -9,10 +9,10 @@ configurations {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'androidx.annotation:annotation:1.5.0'
     implementation 'androidx.core:core:1.9.0'
-    implementation 'androidx.activity:activity:1.5.1'
-    implementation 'androidx.fragment:fragment:1.5.2'
+    implementation 'androidx.activity:activity:1.6.1'
+    implementation 'androidx.fragment:fragment:1.5.4'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
@@ -30,6 +30,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.9'
     implementation 'com.squareup.moshi:moshi:1.11.0'
+    //noinspection GradleDependency
     implementation 'org.slf4j:slf4j-api:1.7.36'
     implementation 'com.github.tony19:logback-android:2.0.0'
     testImplementation 'junit:junit:4.13.2'

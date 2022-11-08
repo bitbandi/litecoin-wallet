@@ -50,7 +50,6 @@ import de.schildbach.wallet.litecoin.util.CrashReporter;
 import de.schildbach.wallet.litecoin.util.Toast;
 import de.schildbach.wallet.litecoin.util.WalletUtils;
 import org.litecoinj.core.VersionMessage;
-import org.litecoinj.crypto.LinuxSecureRandom;
 import org.litecoinj.crypto.MnemonicCode;
 import org.litecoinj.utils.ContextPropagatingThreadFactory;
 import org.litecoinj.utils.Threading;
@@ -88,13 +87,14 @@ public class WalletApplication extends Application {
 
     private static final Logger log = LoggerFactory.getLogger(WalletApplication.class);
 
+    public WalletApplication() {
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectAll().permitDiskReads().permitDiskWrites().penaltyLog().build());
+    }
+
     @Override
     public void onCreate() {
-        new LinuxSecureRandom(); // init proper random number generator
-
         Logging.init(getFilesDir());
-
-        initStrictMode();
 
         Threading.throwOnLockCycles();
         org.litecoinj.core.Context.enableStrictMode();
@@ -279,11 +279,6 @@ public class WalletApplication extends Application {
                 file.delete();
             }
         }
-    }
-
-    public static void initStrictMode() {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().permitDiskReads()
-                .permitDiskWrites().penaltyLog().build());
     }
 
     private void initNotificationManager() {

@@ -1,4 +1,16 @@
-v9.17-v9.19
+v9.24-v9.25
+
+* The app language can be selected independent of the system language on Android 13 and above.
+
+v9.23
+
+* Target Android 13.
+
+v9.22
+
+* Target Android 12.
+
+v9.17-v9.21
 
 * Important bugfix for version alerts.
 
