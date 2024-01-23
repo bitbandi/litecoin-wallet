@@ -16,9 +16,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v1.1.0
       - name: Build artifacts
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v2.11.1
         id: build_app
         with:
           gradle-version: 7.5.1
@@ -33,7 +33,7 @@ jobs:
             mv "$f" "$(echo "$f" | sed s/release-unsigned/release/)";
           done
       - name: Sign prod app APK
-        uses: r0adkll/sign-android-release@v1
+        uses: r0adkll/sign-android-release@v1.0.4
         id: sign_app_prod
         with:
           releaseDirectory: wallet/build/outputs/apk/prod/release
@@ -42,7 +42,7 @@ jobs:
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
       - name: Sign dev app APK
-        uses: r0adkll/sign-android-release@v1
+        uses: r0adkll/sign-android-release@v1.0.4
         id: sign_app_dev
         with:
           releaseDirectory: wallet/build/outputs/apk/dev/release
