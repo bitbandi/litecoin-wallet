@@ -156,6 +156,9 @@ public class BlockchainService extends LifecycleService {
     private static final String ACTION_RESET_BLOCKCHAIN = BlockchainService.class.getPackage().getName()
             + ".reset_blockchain";
 
+    private static final String ACTION_STOP_SERVICE = BlockchainService.class.getPackage().getName()
+            + ".stop_service";
+
     private static final Logger log = LoggerFactory.getLogger(BlockchainService.class);
 
     public static void start(final Context context, final boolean cancelCoinsReceived) {
@@ -183,6 +186,11 @@ public class BlockchainService extends LifecycleService {
         // implicitly stops blockchain service
         ContextCompat.startForegroundService(context,
                 new Intent(BlockchainService.ACTION_RESET_BLOCKCHAIN, null, context, BlockchainService.class));
+    }
+
+    public static void stop(final Context context) {
+        ContextCompat.startForegroundService(context,
+                new Intent(BlockchainService.ACTION_STOP_SERVICE, null, context, BlockchainService.class));
     }
 
     private static class NewTransactionLiveData extends LiveData<Transaction> {
@@ -718,6 +726,10 @@ public class BlockchainService extends LifecycleService {
             } else if (BlockchainService.ACTION_RESET_BLOCKCHAIN.equals(action)) {
                 log.info("will remove blockchain on service shutdown");
                 resetBlockchainOnShutdown = true;
+                stopSelf();
+                if (isBound.get())
+                    log.info("stop is deferred because service still bound");
+            } else if (BlockchainService.ACTION_STOP_SERVICE.equals(action)) {
                 stopSelf();
                 if (isBound.get())
                     log.info("stop is deferred because service still bound");

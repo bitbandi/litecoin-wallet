@@ -343,6 +343,7 @@
   <string name="button_ok">OK</string>
   <string name="button_dismiss">Elvet</string>
   <string name="button_cancel">Mégse</string>
+  <string name="button_exit">Kilépés</string>
   <string name="button_retry">Újra</string>
   <string name="button_help">Segítség</string>
   <string name="button_add">Hozzáadás</string>

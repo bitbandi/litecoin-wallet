@@ -67,6 +67,7 @@ import org.litecoinj.core.PrefixedChecksummedBytes;
 import org.litecoinj.core.Transaction;
 import org.litecoinj.core.VerificationException;
 import org.litecoinj.script.Script;
+import org.litecoinj.wallet.Wallet;
 
 /**
  * @author Andreas Schildbach
@@ -302,6 +303,10 @@ public final class WalletActivity extends AbstractWalletActivity {
                     return true;
                 } else if (itemId == R.id.wallet_options_help) {
                     viewModel.showHelpDialog.setValue(new Event<>(R.string.help_wallet));
+                    return true;
+                } else if (itemId == R.id.wallet_options_exit) {
+                    BlockchainService.stop(WalletActivity.this);
+                    finish();
                     return true;
                 }
                 return false;
