@@ -73,7 +73,7 @@ public abstract class InputParser {
         public void parse() {
             if (input.startsWith("LITECOIN:-")) {
                 try {
-                    final byte[] serializedPaymentRequest = Qr.decodeBinary(input.substring(9));
+                    final byte[] serializedPaymentRequest = Qr.decodeBinary(input.substring(10));
 
                     parseAndHandlePaymentRequest(serializedPaymentRequest);
                 } catch (final IOException x) {
