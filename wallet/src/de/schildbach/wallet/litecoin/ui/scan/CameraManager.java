@@ -41,7 +41,7 @@ import java.util.List;
 @SuppressWarnings("deprecation")
 public final class CameraManager {
     private static final int MIN_FRAME_SIZE = 240;
-    private static final int MAX_FRAME_SIZE = 600;
+    private static final int MAX_FRAME_SIZE = 1200;
     private static final int MIN_PREVIEW_PIXELS = 640 * 480; // normal screen
     private static final int MAX_PREVIEW_PIXELS = 1920 * 1080;
 
