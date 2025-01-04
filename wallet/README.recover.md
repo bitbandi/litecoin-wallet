@@ -81,27 +81,26 @@ password.
 
 We need wallet-tool from litecoinj. First, in a working directory, let's get litecoinj:
 
-    git clone -b release-0.15 https://github.com/litecoinj/litecoinj.git
+    git clone -b release-0.16 https://github.com/litecoinj/litecoinj.git
 
 Make sure everything is compiled and ready to go by using once:
 
-    cd litecoinj/tools
-    ./wallet-tool
+    gradle clean litecoinj-tools:installDist
 
 Now use wallet-tool to sync the wallet from your backup:
 
-    ./wallet-tool reset --wallet=/tmp/bitcoin-wallet-decrypted-backup
-    ./wallet-tool sync --wallet=/tmp/bitcoin-wallet-decrypted-backup --debuglog
+    tools/build/install/wallet-tool/bin/wallet-tool reset --wallet=/tmp/bitcoin-wallet-decrypted-backup
+    tools/build/install/wallet-tool/bin/wallet-tool sync --wallet=/tmp/bitcoin-wallet-decrypted-backup --debuglog
 
 The sync process will take anywhere from a few minutes to hours. Wallet-tool will return to the
 shell prompt if its finished syncing. Have a look at the wallet:
 
-    ./wallet-tool dump --wallet=/tmp/bitcoin-wallet-decrypted-backup
+    tools/build/install/wallet-tool/bin/wallet-tool dump --wallet=/tmp/bitcoin-wallet-decrypted-backup
 
 Does the balance look right? You can see all transactions that ever touched your wallet. Now empty
 your entire wallet to the desired destination wallet if that's what you want:
 
-    ./wallet-tool send --wallet=/tmp/bitcoin-wallet-decrypted-backup --output=<receiving address of destination wallet>:ALL
+    tools/build/install/wallet-tool/bin/wallet-tool send --wallet=/tmp/bitcoin-wallet-decrypted-backup --output=<receiving address of destination wallet>:ALL
 
 If your wallet was protected by a spending PIN, you need to supply that PIN using the `--password=<PIN>` option.
 
@@ -112,7 +111,7 @@ are confirmed, you're done and you can skip the next paragraph to EPILOGUE.
 
 You can also get a list of your private keys, e.g. to claim coins other than Bitcoin which may sit on the same keys. To dump the private keys use:
 
-    ./wallet-tool dump --wallet=/tmp/bitcoin-wallet-decrypted-backup --dump-privkeys
+    tools/build/install/wallet-tool/bin/wallet-tool dump --wallet=/tmp/bitcoin-wallet-decrypted-backup --dump-privkeys
 
 Again, if your wallet was protected by a spending PIN, you need to supply that PIN using the `--password=<PIN>` option.
 
