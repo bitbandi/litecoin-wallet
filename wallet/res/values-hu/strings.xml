@@ -249,7 +249,9 @@
   <string name="preferences_precision_labels_8">LTC, 8 tizedeshely</string>
   <string name="preferences_precision_labels_6">LTC, 6 tizedeshely</string>
   <string name="preferences_precision_labels_4">LTC, 4 tizedeshely</string>
+  <string name="preferences_precision_labels_4_3">mLTC, 4 tizedeshely</string>
   <string name="preferences_precision_labels_2_3">mLTC, 2 tizedeshely</string>
+  <string name="preferences_precision_labels_2_6">µLTC, 2 tizedeshely</string>
   <string name="preferences_precision_labels_0_6">µLTC, nincs tizedeshely</string>
   <string name="preferences_precision_labels_0_8">sat, nincs tizedeshely</string>
   <string name="preferences_own_name_title">Saját név</string>
