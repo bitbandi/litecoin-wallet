@@ -21,7 +21,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         id: build_app
         with:
-          gradle-version: 7.5.1
+          gradle-version: 4.10.1
           generate-job-summary: true
           arguments: assembleRelease
         env:
