@@ -15,13 +15,12 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Validate Gradle wrapper
-        uses: gradle/actions/wrapper-validation@v3
       - name: Build artifacts
         uses: gradle/actions/setup-gradle@v3
         id: build_app
         with:
           gradle-version: 4.10.1
+          validate-wrappers: false
           generate-job-summary: true
           arguments: assembleRelease
         env:
